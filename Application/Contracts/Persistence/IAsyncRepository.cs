@@ -10,7 +10,7 @@ namespace Application.Contracts.Persistence
 	{
 		Task<T> GetByIdAsync(Guid id);
 
-		Task<IReadOnlyList<T>> GetAllAsync();
+		Task<IReadOnlyList<T>> GetListAllAsync();
 
 		Task<T> AddAsync(T entity);
 

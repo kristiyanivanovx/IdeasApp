@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualBasic;
-
-namespace Domain.Entities
+﻿namespace Domain.Entities
 {
 	public class Category
 	{
