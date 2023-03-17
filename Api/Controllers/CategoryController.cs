@@ -23,7 +23,7 @@ namespace Api.Controllers
 
 		[HttpGet("all", Name = "GetAllCategories")]
 		[ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<List<CategoryListViewModel>>> GetAllCategories()
+        public async Task<IActionResult> GetAllCategories()
 		{
 			var dtos = await _mediator.Send(new GetCategoriesListQuery());
 			return Ok(dtos);
@@ -31,7 +31,7 @@ namespace Api.Controllers
 
 		[HttpGet("allwithideas", Name = "GetCategoriesWithEvents")]
 		[ProducesResponseType(StatusCodes.Status200OK)]
-		public async Task<ActionResult<List<CategoryIdeaListViewModel>>> GetCategoriesWithIdeas()
+		public async Task<IActionResult> GetCategoriesWithIdeas()
 		{
 			var dtos = await _mediator.Send(new GetCategoriesListWithIdeasQuery());
 			return Ok(dtos);
@@ -39,7 +39,7 @@ namespace Api.Controllers
 
 		[HttpPost("create", Name = "CreateCategory")]
 		[ProducesResponseType(StatusCodes.Status200OK)]
-		public async Task<ActionResult<CreateCategoryCommandResponse>> CreateCategory([FromBody] CreateCategoryCommand createCategoryCommand)
+		public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryCommand createCategoryCommand)
 		{
 			var response = await _mediator.Send(createCategoryCommand);
 			return Ok(response);
