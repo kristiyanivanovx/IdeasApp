@@ -29,7 +29,7 @@ namespace Api.Controllers
 			return Ok(dtos);
 		}
 
-		[HttpGet("allwithideas", Name = "GetCategoriesWithEvents")]
+		[HttpGet("allwithideas", Name = "GetCategoriesWithIdeas")]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		public async Task<IActionResult> GetCategoriesWithIdeas()
 		{
