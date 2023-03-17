@@ -23,5 +23,6 @@ namespace Api.Controllers
 			var dtos = await _mediator.Send(new GetIdeasListQuery());
 			return Ok(dtos);
 		}
+
 	}
 }
