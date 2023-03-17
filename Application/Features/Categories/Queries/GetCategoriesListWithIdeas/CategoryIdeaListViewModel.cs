@@ -13,6 +13,6 @@ namespace Application.Features.Categories.Queries.GetCategoriesList
 
         public string Name { get; set; } = string.Empty;
 
-        public ICollection<CategoryIdeaDto> Ideas { get; set; } = new List<CategoryIdeaDto>();
+        public ICollection<CategoryIdeaDto>? Ideas { get; set; }
     }
 }

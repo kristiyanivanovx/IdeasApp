@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Application.Features.Categories.Queries.GetCategoriesList;
+using Application.Features.Categories.Queries.GetCategoriesListWithIdeas;
 using Application.Features.Ideas;
 using Application.Features.Ideas.Commands.CreateIdea;
 using Application.Features.Ideas.Commands.DeleteIdea;
@@ -19,6 +20,10 @@ namespace Application.Profiles
 	{
         public MappingProfile()
         {
+            CreateMap<Idea, CategoryIdeaDto>().ReverseMap();
+            CreateMap<Idea, IdeaDetailViewModel>().ReverseMap();
+			CreateMap<Idea, IdeaListViewModel>().ReverseMap();
+
             CreateMap<Category, IdeaListViewModel>().ReverseMap();
             CreateMap<Category, IdeaDetailViewModel>().ReverseMap();
 

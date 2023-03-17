@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence;
 
@@ -11,9 +12,10 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(IdeasSharingDbContext))]
-    partial class IdeasSharingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230317100112_AddCategoryIdeasRelationship")]
+    partial class AddCategoryIdeasRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,7 +26,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Category", b =>
                 {
-                    b.Property<Guid>("CategoryId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -33,41 +35,41 @@ namespace Persistence.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("CategoryId");
+                    b.HasKey("Id");
 
                     b.ToTable("Categories");
 
                     b.HasData(
                         new
                         {
-                            CategoryId = new Guid("2ed64fe5-cd54-4cd0-9898-8d3d759c2f00"),
+                            Id = new Guid("2ed64fe5-cd54-4cd0-9898-8d3d759c2f00"),
                             Name = "Business"
                         },
                         new
                         {
-                            CategoryId = new Guid("1e6075a3-a411-42d0-9711-f901714c86df"),
+                            Id = new Guid("1e6075a3-a411-42d0-9711-f901714c86df"),
                             Name = "Education"
                         },
                         new
                         {
-                            CategoryId = new Guid("ed2fa5f2-0692-41f2-ba8e-4b41847b2c44"),
+                            Id = new Guid("ed2fa5f2-0692-41f2-ba8e-4b41847b2c44"),
                             Name = "Entertainment"
                         },
                         new
                         {
-                            CategoryId = new Guid("d3ee4713-ea7b-4097-9c99-3c6f585185d8"),
+                            Id = new Guid("d3ee4713-ea7b-4097-9c99-3c6f585185d8"),
                             Name = "Medicine"
                         },
                         new
                         {
-                            CategoryId = new Guid("3088c1ee-60be-45e8-bbb1-6d9f5b68365b"),
+                            Id = new Guid("3088c1ee-60be-45e8-bbb1-6d9f5b68365b"),
                             Name = "Utility"
                         });
                 });
 
             modelBuilder.Entity("Domain.Entities.Idea", b =>
                 {
-                    b.Property<Guid>("IdeaId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -84,7 +86,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IdeaId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
@@ -93,7 +95,7 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            IdeaId = new Guid("c7770086-60ad-4e60-b215-b681da299eeb"),
+                            Id = new Guid("c7770086-60ad-4e60-b215-b681da299eeb"),
                             CategoryId = new Guid("3088c1ee-60be-45e8-bbb1-6d9f5b68365b"),
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "With recent AI advancements, application development can benefit greatly. This use case is one of the many viable ones.",
@@ -101,7 +103,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            IdeaId = new Guid("b77ac3c5-63df-4787-bd8d-664521b3c83a"),
+                            Id = new Guid("b77ac3c5-63df-4787-bd8d-664521b3c83a"),
                             CategoryId = new Guid("3088c1ee-60be-45e8-bbb1-6d9f5b68365b"),
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "An app which makes recommendations on which metro stations to improve based on feedback and recommendations on where one could be opened to meet the demand.",
@@ -111,7 +113,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Like", b =>
                 {
-                    b.Property<Guid>("LikeId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -121,7 +123,7 @@ namespace Persistence.Migrations
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("LikeId");
+                    b.HasKey("Id");
 
                     b.ToTable("Likes");
                 });

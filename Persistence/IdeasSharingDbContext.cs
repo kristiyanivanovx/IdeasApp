@@ -31,31 +31,31 @@ namespace Persistence
 
 			modelBuilder.Entity<Category>().HasData(new Category
 			{
-				Id = businessGuid,
+				CategoryId = businessGuid,
 				Name = "Business",
 			});
 
 			modelBuilder.Entity<Category>().HasData(new Category
 			{
-				Id = educationGuid,
+				CategoryId = educationGuid,
 				Name = "Education",
 			});
 
 			modelBuilder.Entity<Category>().HasData(new Category
 			{
-				Id = entertainmentGuid,
+				CategoryId = entertainmentGuid,
 				Name = "Entertainment",
 			});
 
 			modelBuilder.Entity<Category>().HasData(new Category
 			{
-				Id = medicineGuid,
+				CategoryId = medicineGuid,
 				Name = "Medicine",
 			});
 
 			modelBuilder.Entity<Category>().HasData(new Category
 			{
-				Id = utilityGuid,
+				CategoryId = utilityGuid,
 				Name = "Utility",
 			});
 
@@ -65,7 +65,7 @@ namespace Persistence
 			// Ideas seeding
 			modelBuilder.Entity<Idea>().HasData(new Idea
 			{
-				Id = weatherAppIdeaGuid,
+				IdeaId = weatherAppIdeaGuid,
 				CategoryId = utilityGuid,
 				Name = "Create an weather app powered by AI!",
 				Description = "With recent AI advancements, application development can benefit greatly. This use case is one of the many viable ones."
@@ -73,11 +73,20 @@ namespace Persistence
 
 			modelBuilder.Entity<Idea>().HasData(new Idea
 			{
-				Id = metroAppIdeaGuid,
+				IdeaId = metroAppIdeaGuid,
 				CategoryId = utilityGuid,
 				Name = "Metro application featuring AI",
 				Description = "An app which makes recommendations on which metro stations to improve based on feedback and recommendations on where one could be opened to meet the demand."
 			});
+
+			modelBuilder.Entity<Category>()
+				.HasMany(c => c.Ideas)
+				.WithOne();
+
+			modelBuilder.Entity<Idea>()
+				.HasOne(i => i.Category)
+				.WithMany(c => c.Ideas)
+				.HasForeignKey(i => i.CategoryId);
 
 			base.OnModelCreating(modelBuilder);
 		}

@@ -8,12 +8,12 @@ namespace Application.Features.Categories.Queries.GetCategoriesListWithIdeas
 {
 	public class CategoryIdeaDto
 	{
-		public Guid Id { get; set; }
+		public Guid IdeaId { get; set; }
 
 		public string Name { get; set; } = string.Empty;
+		
+		//public string? Description { get; set; };
 
-        public DateTime CreatedOn { get; set; }
-
-        public Guid CategoryId { get; set; }
+		public DateTime CreatedOn { get; set; }
     }
 }

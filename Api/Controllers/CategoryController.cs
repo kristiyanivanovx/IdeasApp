@@ -1,8 +1,4 @@
-﻿using System.Net.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Application.Features.Categories.Commands.CreateCategory;
+﻿using Application.Features.Categories.Commands.CreateCategory;
 using Application.Features.Categories.Queries.GetCategoriesList;
 using Application.Features.Categories.Queries.GetCategoriesListWithIdeas;
 using MediatR;

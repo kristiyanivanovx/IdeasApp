@@ -34,7 +34,7 @@ namespace Application.Features.Ideas.Commands.CreateIdea
 
 			idea = await _ideaRepository.AddAsync(idea);
 
-			return idea.Id;
+			return idea.IdeaId;
 		}
 	}
 }

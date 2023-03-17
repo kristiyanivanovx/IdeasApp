@@ -33,7 +33,6 @@ namespace Application.Features.Queries
             var ideaDetailDto = _mapper.Map<IdeaDetailViewModel>(idea);
 
             var category = await _categoryRepository.GetByIdAsync(idea.CategoryId);
-
             ideaDetailDto.Category = _mapper.Map<CategoryDto>(category);
 
             return ideaDetailDto;

@@ -9,11 +9,16 @@ namespace Application.Features.Ideas
 {
 	public class IdeaListViewModel
 	{
-		public Guid Id { get; set; }
+		public Guid IdeaId { get; set; }
 
 		public string Name { get; set; } = string.Empty;
 
-		public Category Category { get; set; } = default!;
+		public string? Description { get; set; }
+
+		// details provided in other search
+		//public Guid CategoryId { get; set; }
+
+		//public Category Category { get; set; } = default!;
 
 		public DateTime CreatedOn { get; set; }
 	}

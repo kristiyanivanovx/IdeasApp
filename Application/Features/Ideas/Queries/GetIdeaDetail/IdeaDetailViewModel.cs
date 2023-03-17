@@ -10,13 +10,11 @@ namespace Application.Features.Queries
 {
     public class IdeaDetailViewModel
     {
-        public Guid Id { get; set; }
+        public Guid IdeaId { get; set; }
 
         public string Name { get; set; } = string.Empty;
 
         public string Description { get; set; } = string.Empty;
-
-        public Guid CategoryId { get; set; }
 
         public CategoryDto Category { get; set; } = default!;
 
