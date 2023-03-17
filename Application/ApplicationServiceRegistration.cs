@@ -15,10 +15,8 @@ namespace Application
 	{
 		public static IServiceCollection AddApplicationServices(this IServiceCollection services)
 		{
-			var assembly = Assembly.GetExecutingAssembly();
-
-			services.AddAutoMapper(assembly);
-			services.AddMediatR(assembly);
+			services.AddAutoMapper(Assembly.GetExecutingAssembly());
+			services.AddMediatR(Assembly.GetExecutingAssembly());
 
 			return services;
 		}

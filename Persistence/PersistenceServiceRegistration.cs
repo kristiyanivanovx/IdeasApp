@@ -20,6 +20,7 @@ namespace Persistence
 				options.UseSqlServer(
 					configuration.GetConnectionString("IdeasSharingConnectionString")));
 
+			services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
 			services.AddScoped<ICategoryRepository, CategoryRepository>();
 			services.AddScoped<IIdeaRepository, IdeaRepository>();
 			services.AddScoped<ILikeRepository, LikeRepository>();
