@@ -1,6 +1,8 @@
-﻿namespace Domain.Entities
+﻿using Domain.Common;
+
+namespace Domain.Entities
 {
-	public class Idea
+	public class Idea : AuditableEntity
 	{
 		public Guid IdeaId { get; set; }
 
@@ -8,7 +10,7 @@
 
 		public string? Description { get; set; }
 
-		public DateTime CreatedOn { get; set; }
+		public DateTime CreatedDate { get; set; }
 
 		public Guid CategoryId { get; set; }
 

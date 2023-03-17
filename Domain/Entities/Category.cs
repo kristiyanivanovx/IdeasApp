@@ -1,6 +1,8 @@
-﻿namespace Domain.Entities
+﻿using Domain.Common;
+
+namespace Domain.Entities
 {
-	public class Category
+	public class Category : AuditableEntity
 	{
 		public Guid CategoryId { get; set; }
 

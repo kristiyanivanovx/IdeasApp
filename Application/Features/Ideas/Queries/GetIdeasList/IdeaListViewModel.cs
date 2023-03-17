@@ -20,6 +20,6 @@ namespace Application.Features.Ideas
 
 		//public Category Category { get; set; } = default!;
 
-		public DateTime CreatedOn { get; set; }
+		public DateTime CreatedDate { get; set; }
 	}
 }

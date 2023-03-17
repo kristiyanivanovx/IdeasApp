@@ -33,30 +33,35 @@ namespace Persistence
 			{
 				CategoryId = businessGuid,
 				Name = "Business",
+				CreatedDate = DateTime.UtcNow
 			});
 
 			modelBuilder.Entity<Category>().HasData(new Category
 			{
 				CategoryId = educationGuid,
 				Name = "Education",
+				CreatedDate = DateTime.UtcNow
 			});
 
 			modelBuilder.Entity<Category>().HasData(new Category
 			{
 				CategoryId = entertainmentGuid,
 				Name = "Entertainment",
+				CreatedDate = DateTime.UtcNow
 			});
 
 			modelBuilder.Entity<Category>().HasData(new Category
 			{
 				CategoryId = medicineGuid,
 				Name = "Medicine",
+				CreatedDate = DateTime.UtcNow
 			});
 
 			modelBuilder.Entity<Category>().HasData(new Category
 			{
 				CategoryId = utilityGuid,
 				Name = "Utility",
+				CreatedDate = DateTime.UtcNow
 			});
 
 			var weatherAppIdeaGuid = Guid.Parse("{c7770086-60ad-4e60-b215-b681da299eeb}");
@@ -68,7 +73,8 @@ namespace Persistence
 				IdeaId = weatherAppIdeaGuid,
 				CategoryId = utilityGuid,
 				Name = "Create an weather app powered by AI!",
-				Description = "With recent AI advancements, application development can benefit greatly. This use case is one of the many viable ones."
+				Description = "With recent AI advancements, application development can benefit greatly. This use case is one of the many viable ones.",
+				CreatedDate = DateTime.UtcNow
 			});
 
 			modelBuilder.Entity<Idea>().HasData(new Idea
@@ -76,7 +82,8 @@ namespace Persistence
 				IdeaId = metroAppIdeaGuid,
 				CategoryId = utilityGuid,
 				Name = "Metro application featuring AI",
-				Description = "An app which makes recommendations on which metro stations to improve based on feedback and recommendations on where one could be opened to meet the demand."
+				Description = "An app which makes recommendations on which metro stations to improve based on feedback and recommendations on where one could be opened to meet the demand.",
+				CreatedDate = DateTime.UtcNow
 			});
 
 			modelBuilder.Entity<Category>()

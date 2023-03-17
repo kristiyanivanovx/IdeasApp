@@ -1,6 +1,8 @@
-﻿namespace Domain.Entities
+﻿using Domain.Common;
+
+namespace Domain.Entities
 {
-	public class Like
+	public class Like : AuditableEntity
 	{
 		public Guid LikeId { get; set; }
 		

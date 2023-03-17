@@ -18,6 +18,6 @@ namespace Application.Features.Queries
 
         public CategoryDto Category { get; set; } = default!;
 
-        public DateTime CreatedOn { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

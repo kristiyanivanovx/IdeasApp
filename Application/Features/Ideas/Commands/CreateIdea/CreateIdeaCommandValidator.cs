@@ -23,7 +23,7 @@ namespace Application.Features.Ideas.Commands.CreateIdea
                 .MaximumLength(50)
 					.WithMessage("{PropertyName} must not exceed 50 characters.");
 
-			RuleFor(p => p.CreatedOn)
+			RuleFor(p => p.CreatedDate)
 				.NotEmpty()
 					.WithMessage("{PropertyName} is required.")
 				.NotNull()

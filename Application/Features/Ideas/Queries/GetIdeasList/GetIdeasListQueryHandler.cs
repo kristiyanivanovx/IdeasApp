@@ -25,7 +25,7 @@ namespace Application.Features.Ideas
         public async Task<List<IdeaListViewModel>> Handle(GetIdeasListQuery request, CancellationToken cancellationToken)
 		{
 			var allIdeas = (await _ideaRepository.GetListAllAsync())
-				.OrderBy(x => x.CreatedOn);
+				.OrderBy(x => x.CreatedDate);
 
 			return _mapper.Map<List<IdeaListViewModel>>(allIdeas);
 		}

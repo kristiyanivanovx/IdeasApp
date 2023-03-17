@@ -15,7 +15,7 @@ namespace Application.Features.Ideas.Commands.UpdateIdea
 
 		public string? Description { get; set; }
 
-		public DateTime CreatedOn { get; set; }
+		public DateTime CreatedDate { get; set; }
 
 		public Guid CategoryId { get; set; }
 	}

@@ -14,6 +14,6 @@ namespace Application.Features.Categories.Queries.GetCategoriesListWithIdeas
 		
 		//public string? Description { get; set; };
 
-		public DateTime CreatedOn { get; set; }
+		public DateTime CreatedDate { get; set; }
     }
 }
