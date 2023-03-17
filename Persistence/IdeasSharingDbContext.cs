@@ -12,7 +12,7 @@ namespace Persistence
             
         }
 
-        public DbSet<Category> Ideas { get; set; }
+        public DbSet<Idea> Ideas { get; set; }
 
         public DbSet<Category> Categories { get; set; }
 
@@ -60,14 +60,14 @@ namespace Persistence
 			});
 
 			// Ideas seeding
-			modelBuilder.Entity<Category>().HasData(new Category
+			modelBuilder.Entity<Idea>().HasData(new Idea
 			{
 				Id = utilityGuid,
 				Name = "Create an weather app powered by AI!",
 				Description = "With recent AI advancements, application development can benefit greatly. This use case is one of the many viable ones."
 			});
 
-			modelBuilder.Entity<Category>().HasData(new Category
+			modelBuilder.Entity<Idea>().HasData(new Idea
 			{
 				Id = utilityGuid,
 				Name = "Metro application featuring AI",

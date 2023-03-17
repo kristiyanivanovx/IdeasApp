@@ -23,7 +23,7 @@ namespace Application.Features.Ideas.Commands.CreateIdea
 
 		public async Task<Guid> Handle(CreateIdeaCommand request, CancellationToken cancellationToken)
 		{
-			var idea = _mapper.Map<Category>(request);
+			var idea = _mapper.Map<Idea>(request);
 
 			var validator = new CreateIdeaCommandValidator(_ideaRepository);
 			var validationResult = await validator.ValidateAsync(request);

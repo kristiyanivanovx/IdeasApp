@@ -14,12 +14,12 @@ namespace Application.Features.Queries
     public class GetIdeaDetailQueryHandler : IRequestHandler<GetIdeaDetailQuery, IdeaDetailViewModel>
     {
         private readonly IMapper _mapper;
-        private readonly IAsyncRepository<Category> _ideaRepository;
+        private readonly IAsyncRepository<Idea> _ideaRepository;
         private readonly IAsyncRepository<Category> _categoryRepository;
 
         public GetIdeaDetailQueryHandler(
             IMapper mapper,
-            IAsyncRepository<Category> ideaRepository,
+            IAsyncRepository<Idea> ideaRepository,
             IAsyncRepository<Category> categoryRepository)
         {
             _mapper = mapper;

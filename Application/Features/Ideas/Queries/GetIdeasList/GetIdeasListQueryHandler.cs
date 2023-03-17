@@ -13,10 +13,10 @@ namespace Application.Features.Ideas
 {
 	public class GetIdeasListQueryHandler : IRequestHandler<GetIdeasListQuery, List<IdeaListViewModel>>
 	{
-		private readonly IAsyncRepository<Category> _ideaRepository;
+		private readonly IAsyncRepository<Idea> _ideaRepository;
 		private readonly IMapper _mapper;
 
-        public GetIdeasListQueryHandler(IMapper mapper, IAsyncRepository<Category> ideaRepository)
+        public GetIdeasListQueryHandler(IMapper mapper, IAsyncRepository<Idea> ideaRepository)
         {
 			_mapper = mapper;
 			_ideaRepository = ideaRepository;

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Persistence.Repositories
 {
-	public class IdeaRepository : BaseRepository<Category>, IIdeaRepository
+	public class IdeaRepository : BaseRepository<Idea>, IIdeaRepository
 	{
 		public IdeaRepository(IdeasSharingDbContext dbContext) : base(dbContext)
 		{

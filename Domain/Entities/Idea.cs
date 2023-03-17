@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities
 {
-	public class Category
+	public class Idea
 	{
 		public Guid Id { get; set; }
 
