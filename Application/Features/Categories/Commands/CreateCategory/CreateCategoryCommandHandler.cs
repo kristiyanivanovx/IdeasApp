@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Categories.Commands.CreateCategory
 {
-	public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, Guid>
+	public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, CreateCategoryCommandResponse>
 	{
 		private readonly IMapper _mapper;
 		private readonly ICategoryRepository _categoryRepository;
@@ -22,20 +22,31 @@ namespace Application.Features.Categories.Commands.CreateCategory
 			_categoryRepository = categoryRepository;
 		}
 
-		public async Task<Guid> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
+		public async Task<CreateCategoryCommandResponse> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
 		{
-			var category = _mapper.Map<Category>(request);
+			var createCategoryCommandResponse = new CreateCategoryCommandResponse();
 
 			var validator = new CreateCategoryCommandValidator();
 			var validationResult = await validator.ValidateAsync(request);
+
 			if (validationResult.Errors.Count > 0)
 			{
-				throw new Exceptions.ValidationException(validationResult);
+				createCategoryCommandResponse.Success = false;
+				createCategoryCommandResponse.ValidationErrors = new List<string>();
+				foreach (var error in validationResult.Errors)
+				{
+					createCategoryCommandResponse.ValidationErrors.Add(error.ErrorMessage);
+				}
 			}
 
-			category = await _categoryRepository.AddAsync(category);
+			if (createCategoryCommandResponse.Success)
+			{
+				var category = new Category() { Name = request.Name };
+				category = await _categoryRepository.AddAsync(category);
+				createCategoryCommandResponse.Category = _mapper.Map<CreateCategoryDto>(category);
+			}
 
-			return category.Id;
+			return createCategoryCommandResponse;
 		}
 	}
 }
