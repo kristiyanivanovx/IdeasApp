@@ -52,13 +52,13 @@ namespace Api.Controllers
 			return NoContent();
 		}
 
-		[HttpDelete("{id}", Name = "DeleteIdea")]
+		[HttpDelete("{ideaId}", Name = "DeleteIdea")]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[ProducesDefaultResponseType]
-		public async Task<ActionResult> Delete(Guid id)
+		public async Task<ActionResult> Delete(Guid ideaId)
 		{
-			var deleteIdeaCommand = new DeleteIdeaCommand() { IdeaId = id };
+			var deleteIdeaCommand = new DeleteIdeaCommand() { IdeaId = ideaId };
 			await _mediator.Send(deleteIdeaCommand);
 			return NoContent();
 		}

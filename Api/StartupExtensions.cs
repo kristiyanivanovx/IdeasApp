@@ -1,6 +1,7 @@
 ﻿using Application;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using Microsoft.OpenApi.Models;
 using Persistence;
 
 namespace Api
@@ -9,6 +10,8 @@ namespace Api
 	{
 		public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
 		{
+			AddSwagger(builder.Services);
+
 			builder.Services.AddApplicationServices();
 			builder.Services.AddPersistenceServices(builder.Configuration);
 
@@ -24,6 +27,15 @@ namespace Api
 
 		public static WebApplication ConfigurePipeline(this WebApplication app)
 		{
+			if (app.Environment.IsDevelopment())
+			{
+				app.UseSwagger();
+				app.UseSwaggerUI(config =>
+				{
+					config.SwaggerEndpoint("/swagger/v1/swagger.json", "Ideas Sharing API");
+				});
+			}
+
 			app.UseHttpsRedirection();
 			
 			app.UseRouting();
@@ -54,6 +66,18 @@ namespace Api
 				// add logging
 				Console.WriteLine(ex.ToString());
 			}
+		}
+
+		private static void AddSwagger(IServiceCollection services)
+		{
+			services.AddSwaggerGen(c =>
+			{
+				c.SwaggerDoc("v1", new OpenApiInfo
+				{
+					Version = "v1",
+					Title = "GloboTicket Ticket Management API",
+				});
+			});
 		}
 	}
 }
