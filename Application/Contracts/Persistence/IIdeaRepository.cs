@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Application.Contracts.Persistence
 {
-	public interface IIdeaRepository : IAsyncRepository<Idea>
+	public interface IIdeaRepository : IAsyncRepository<Category>
 	{
+		Task<bool> IsIdeaNameAndDescriptionUnique(string name, string? description);
 	}
 }

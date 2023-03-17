@@ -6,6 +6,6 @@
 
 		public string Name { get; set; } = string.Empty;
 
-		public ICollection<Idea> Ideas { get; set; } = new List<Idea>();
+		public ICollection<Category> Ideas { get; set; } = new List<Category>();
     }
 }
