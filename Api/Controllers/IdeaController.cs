@@ -28,8 +28,8 @@ namespace Api.Controllers
 			return Ok(ideaList);
 		}
 
-		[HttpGet("{id}", Name = "GeIdeaById")]
-		public async Task<IActionResult> GeIdeaById(Guid id)
+		[HttpGet("{id}", Name = "GetIdeaById")]
+		public async Task<IActionResult> GetIdeaById(Guid id)
 		{
 			return Ok(await _mediator.Send(new GetIdeaDetailQuery() { Id = id }));
 		}
