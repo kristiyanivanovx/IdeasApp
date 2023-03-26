@@ -41,9 +41,13 @@ namespace Application.Features.Categories.Commands.UpdateCategory
 			}
 
 			if (updateCategoryCommandResponse.Success)
-			{	
-				var category = new Category() { Name = request.Name };
-				category = await _categoryRepository.AddAsync(category);
+			{
+				var category = await _categoryRepository.GetByIdAsync(request.CategoryId);
+				
+				category.Name = request.Name;
+
+				await _categoryRepository.UpdateAsync(category);
+				
 				updateCategoryCommandResponse.Category = _mapper.Map<UpdateCategoryDto>(category);
 			}
 

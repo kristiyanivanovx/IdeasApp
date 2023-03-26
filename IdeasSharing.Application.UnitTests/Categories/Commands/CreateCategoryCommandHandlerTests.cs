@@ -15,12 +15,12 @@ using Xunit;
 
 namespace IdeasSharing.Application.UnitTests.Categories.Commands
 {
-	public class CreateCategoryTests
+	public class CreateCategoryCommandHandlerTests
 	{
 		private readonly IMapper _mapper;
 		private readonly Mock<ICategoryRepository> _mockCategoryRepository;
 
-		public CreateCategoryTests()
+		public CreateCategoryCommandHandlerTests()
 		{
 			_mockCategoryRepository = RepositoryMocks.GetCategoryRepository();
 			var configurationProvider = new MapperConfiguration(cfg =>
@@ -32,14 +32,17 @@ namespace IdeasSharing.Application.UnitTests.Categories.Commands
 		}
 
 		[Fact]
-		public async Task Handle_ValidCategory_AddedToCategoriesRepo()
+		public async Task Handle_ValidCategory_AddedToCategoriesRepository()
 		{
+			// Arrange
 			var handler = new CreateCategoryCommandHandler(_mapper, _mockCategoryRepository.Object);
 
+			// Act
 			await handler.Handle(new CreateCategoryCommand() { Name = "TestCategory" }, CancellationToken.None);
 
 			var allCategories = await _mockCategoryRepository.Object.GetListAllAsync();
 
+			// Assert
 			allCategories.Count.ShouldBe(5);
 		}
 	}

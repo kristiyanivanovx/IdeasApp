@@ -16,6 +16,7 @@ namespace Persistence.Repositories
         {
 			_dbContext = dbContext;
 		}
+
 		public async Task<T> GetByIdAsync(Guid id)
 		{
 			return await _dbContext.Set<T>().FindAsync(id);
@@ -24,7 +25,6 @@ namespace Persistence.Repositories
 		public async Task<IReadOnlyList<T>> GetListAllAsync()
 		{
 			return await _dbContext.Set<T>().ToListAsync();
-
 		}
 
 		public async Task<T> AddAsync(T entity)

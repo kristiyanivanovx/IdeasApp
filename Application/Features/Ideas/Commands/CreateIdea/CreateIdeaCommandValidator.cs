@@ -26,8 +26,7 @@ namespace Application.Features.Ideas.Commands.CreateIdea
 			RuleFor(p => p.CreatedDate)
 				.NotEmpty()
 					.WithMessage("{PropertyName} is required.")
-				.NotNull()
-				.GreaterThan(DateTime.Now);
+				.NotNull();
 
 			RuleFor(p => p)
 				.MustAsync(IsIdeaNameAndDescriptionUnique)

@@ -13,9 +13,9 @@ namespace Application.Features.Ideas.Commands.UpdateIdea
 	public class UpdateIdeaCommandHandler : IRequestHandler<UpdateIdeaCommand>
 	{
 		private readonly IMapper _mapper;
-		private readonly IAsyncRepository<Category> _ideaRepository;
+		private readonly IAsyncRepository<Idea> _ideaRepository;
 
-		public UpdateIdeaCommandHandler(IMapper mapper, IAsyncRepository<Category> ideaRepository)
+		public UpdateIdeaCommandHandler(IMapper mapper, IAsyncRepository<Idea> ideaRepository)
 		{
 			_mapper = mapper;
 			_ideaRepository = ideaRepository;
@@ -25,7 +25,7 @@ namespace Application.Features.Ideas.Commands.UpdateIdea
 		{
 			var ideaToUpdate = await _ideaRepository.GetByIdAsync(request.IdeaId);
 
-			_mapper.Map(request, ideaToUpdate, typeof(UpdateIdeaCommand), typeof(Category));
+			_mapper.Map(request, ideaToUpdate, typeof(UpdateIdeaCommand), typeof(Idea));
 
 			await _ideaRepository.UpdateAsync(ideaToUpdate);
 

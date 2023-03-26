@@ -1,8 +1,8 @@
 ﻿using Application.Contracts.Persistence;
 using Application.Features.Categories.Queries.GetCategoriesList;
+using Application.Features.Categories.Queries.GetCategoriesListWithIdeas;
 using Application.Profiles;
 using AutoMapper;
-using Domain.Entities;
 using IdeasSharing.Application.UnitTests.Mocks;
 using Moq;
 using Shouldly;
@@ -15,12 +15,12 @@ using Xunit;
 
 namespace IdeasSharing.Application.UnitTests.Categories.Queries
 {
-	public class GetCategoriesListQueryHandlerTests
+	public class GetCategoriesListWithIdeasQueryHandlerTests
 	{
 		private readonly IMapper _mapper;
 		private readonly Mock<ICategoryRepository> _mockCategoryRepository;
 
-		public GetCategoriesListQueryHandlerTests()
+		public GetCategoriesListWithIdeasQueryHandlerTests()
 		{
 			_mockCategoryRepository = RepositoryMocks.GetCategoryRepository();
 			var configurationProvider = new MapperConfiguration(config =>
@@ -32,15 +32,17 @@ namespace IdeasSharing.Application.UnitTests.Categories.Queries
 		}
 
 		[Fact]
-		public async Task Handle_GetAllCategoriesList()
+		public async Task Handler_GetCategoriesListWithIdeas()
 		{
-			var handler = new GetCategoriesListQueryHandler(_mapper, _mockCategoryRepository.Object);
+			var handler = new GetCategoriesListWithIdeasQueryHandler(_mapper, _mockCategoryRepository.Object);
 
-			var result = await handler.Handle(new GetCategoriesListQuery(), CancellationToken.None);
+			var result = await handler.Handle(new GetCategoriesListWithIdeasQuery(), CancellationToken.None);
 
-			result.ShouldBeOfType<List<CategoryListViewModel>>();
+			result.ShouldBeOfType<List<CategoryIdeaListViewModel>>();
 
 			result.Count.ShouldBe(4);
+			result.First().Ideas.ShouldNotBeNull();
+			result.First().Ideas.ShouldBeEmpty();
 		}
 	}
 }

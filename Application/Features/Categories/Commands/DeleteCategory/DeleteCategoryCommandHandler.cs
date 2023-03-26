@@ -11,22 +11,22 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Categories.Commands.DeleteCategory
 {
-	public class DeleteCategoryCommandHandler : IRequestHandler<DeleteIdeaCommand>
+	public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryCommand>
 	{
 		private readonly IMapper _mapper;
-		private readonly IAsyncRepository<Category> _ideaRepository;
+		private readonly IAsyncRepository<Category> _categoryRepository;
 
-		public DeleteCategoryCommandHandler(IMapper mapper, IAsyncRepository<Category> ideaRepository)
+		public DeleteCategoryCommandHandler(IMapper mapper, IAsyncRepository<Category> categoryRepository)
 		{
 			_mapper = mapper;
-			_ideaRepository = ideaRepository;
+			_categoryRepository = categoryRepository;
 		}
 
-		public async Task<Unit> Handle(DeleteIdeaCommand request, CancellationToken cancellationToken)
+		public async Task<Unit> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
 		{
-			var ideaToDelete = await _ideaRepository.GetByIdAsync(request.IdeaId);
+			var ideaToDelete = await _categoryRepository.GetByIdAsync(request.CategoryId);
 
-			await _ideaRepository.DeleteAsync(ideaToDelete);
+			await _categoryRepository.DeleteAsync(ideaToDelete);
 
 			return Unit.Value;
 		}

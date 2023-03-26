@@ -13,9 +13,9 @@ namespace Application.Features.Ideas.Commands.DeleteIdea
 	public class DeleteIdeaCommandHandler : IRequestHandler<DeleteIdeaCommand>
 	{
 		private readonly IMapper _mapper;
-		private readonly IAsyncRepository<Category> _ideaRepository;
+		private readonly IAsyncRepository<Idea> _ideaRepository;
 
-		public DeleteIdeaCommandHandler(IMapper mapper, IAsyncRepository<Category> ideaRepository)
+		public DeleteIdeaCommandHandler(IMapper mapper, IAsyncRepository<Idea> ideaRepository)
 		{
 			_mapper = mapper;
 			_ideaRepository = ideaRepository;
