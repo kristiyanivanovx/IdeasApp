@@ -10,10 +10,14 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Categories.Commands.CreateCategory
 {
-	public class CreateCategoryCommandValidator : AbstractValidator<CreateCategoryCommand>
+	public class UpdateCategoryCommandValidator : AbstractValidator<UpdateCategoryCommand>
 	{
-		public CreateCategoryCommandValidator()
+		public UpdateCategoryCommandValidator()
         {
+			RuleFor(p => p.CategoryId)
+				.NotEmpty()
+					.WithMessage("{PropertyName} is required.");
+
 			RuleFor(p => p.Name)
 				.NotEmpty()
 					.WithMessage("{PropertyName} is required.")

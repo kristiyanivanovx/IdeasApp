@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Application.Features.Categories.Commands.CreateCategory;
+using Application.Features.Categories.Commands.UpdateCategory;
 using Application.Features.Categories.Queries.GetCategoriesList;
 using Application.Features.Categories.Queries.GetCategoriesListWithIdeas;
 using Application.Features.Ideas;
@@ -34,6 +35,8 @@ namespace Application.Profiles
 			CreateMap<Category, CategoryIdeaListViewModel>();
 			CreateMap<Category, CreateCategoryCommand>();
 			CreateMap<Category, CreateCategoryDto>();
+
+			CreateMap<Category, UpdateCategoryDto>().ReverseMap();
 
 			//CreateMap<Category, CreateIdeaCommand>().ReverseMap();
 			//         CreateMap<Category, UpdateIdeaCommand>().ReverseMap();
