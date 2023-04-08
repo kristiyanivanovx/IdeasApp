@@ -1,4 +1,5 @@
-﻿using Application;
+﻿using Api.Middleware;
+using Application;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using Microsoft.OpenApi.Models;
@@ -29,6 +30,9 @@ namespace Api
 		{
 			if (app.Environment.IsDevelopment())
 			{
+				// reset database in dev environment
+				//app.ResetDatabaseAsync().GetAwaiter().GetResult();
+
 				app.UseSwagger();
 				app.UseSwaggerUI(config =>
 				{
@@ -39,6 +43,8 @@ namespace Api
 			app.UseHttpsRedirection();
 			
 			app.UseRouting();
+
+			app.UseCustomExceptionHandler();
 
 			app.UseCors("Open");
 

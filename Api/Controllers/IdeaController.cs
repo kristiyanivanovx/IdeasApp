@@ -34,7 +34,6 @@ namespace Api.Controllers
 			return Ok(await _mediator.Send(new GetIdeaDetailQuery() { Id = id }));
 		}
 
-
 		[HttpPost(Name = "CreateIdea")]
 		public async Task<ActionResult<Guid>> Create([FromBody] CreateIdeaCommand createIdeaCommand)
 		{

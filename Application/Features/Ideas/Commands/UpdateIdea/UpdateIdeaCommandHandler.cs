@@ -1,4 +1,5 @@
 ﻿using Application.Contracts.Persistence;
+using Application.Exceptions;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
@@ -23,7 +24,7 @@ namespace Application.Features.Ideas.Commands.UpdateIdea
 
 		public async Task<Unit> Handle(UpdateIdeaCommand request, CancellationToken cancellationToken)
 		{
-			var ideaToUpdate = await _ideaRepository.GetByIdAsync(request.IdeaId);
+			var ideaToUpdate = await _ideaRepository.GetByIdAsync(request.IdeaId) ?? throw new NotFoundException(nameof(Idea), request.IdeaId);
 
 			_mapper.Map(request, ideaToUpdate, typeof(UpdateIdeaCommand), typeof(Idea));
 

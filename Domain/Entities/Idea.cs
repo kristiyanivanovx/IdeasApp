@@ -14,6 +14,6 @@ namespace Domain.Entities
 
 		public Guid CategoryId { get; set; }
 
-		public Category? Category { get; set; } = default!;
+		public Category Category { get; set; }
 	}
 }

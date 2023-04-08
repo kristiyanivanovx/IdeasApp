@@ -88,7 +88,8 @@ namespace Persistence
 
 			modelBuilder.Entity<Category>()
 				.HasMany(c => c.Ideas)
-				.WithOne();
+				.WithOne(c => c.Category)
+				.OnDelete(DeleteBehavior.Cascade);
 
 			modelBuilder.Entity<Idea>()
 				.HasOne(i => i.Category)

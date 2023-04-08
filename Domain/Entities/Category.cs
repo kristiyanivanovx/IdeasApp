@@ -8,6 +8,6 @@ namespace Domain.Entities
 
 		public string Name { get; set; } = string.Empty;
 
-		public ICollection<Idea>? Ideas { get; set; }
+		public ICollection<Idea> Ideas { get; set; }
     }
 }

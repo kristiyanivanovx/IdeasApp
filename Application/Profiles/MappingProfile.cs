@@ -23,6 +23,9 @@ namespace Application.Profiles
         public MappingProfile()
         {
             CreateMap<Idea, UpdateIdeaCommand>().ReverseMap();
+            CreateMap<Idea, DeleteIdeaCommand>().ReverseMap();
+            CreateMap<Idea, GetIdeaDetailQuery>().ReverseMap();
+            //CreateMap<Idea, GetIdeasListQuery>().ReverseMap();
 
             CreateMap<Idea, CategoryIdeaDto>().ReverseMap();
             CreateMap<Idea, IdeaDetailViewModel>().ReverseMap();

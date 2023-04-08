@@ -10,6 +10,8 @@ namespace Application.Features.Ideas.Commands.CreateIdea
 {
 	public class CreateIdeaCommand : IRequest<Guid>
 	{
+		public Guid IdeaId { get; set; }
+		
 		public string Name { get; set; } = string.Empty;
 
 		public string? Description { get; set; }
